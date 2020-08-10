@@ -15,6 +15,9 @@ struct Course: Decodable {
     var name: String?
     var link: String?
     var imageUrl: String?
-    var number_of_lessons: Int?
-    var number_of_tests: Int?
+    var numberOfLessons: Int?
+    var numberOfTests: Int?
 }
+
+//    var number_of_lessons: Int?
+//var number_of_tests: Int?
