@@ -20,7 +20,6 @@ class CoursesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
     }
     
     func fetchData() {
@@ -33,6 +32,11 @@ class CoursesViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func fetchDataWithAlamofire() {
+        
+        AlamofireNetworkRequest.sendRequest(url: url)
     }
     
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {
