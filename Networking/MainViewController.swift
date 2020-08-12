@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 enum Actions: String, CaseIterable {
     case downloadImage = "Donwnload Image"
@@ -23,12 +24,57 @@ private let uploadImage = "https://api.imgur.com/3/image"
 
 class MainViewController: UICollectionViewController {
     
-    // let actions = ["Donwnload Image", "GET", "POST", "OUR Courses", "Upload Image"]
     let actions = Actions.allCases
+    private var alert: UIAlertController!
+    private let dataProvider = DataProvider()
+    private var filePath: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerForNotification()
+        
+        self.dataProvider.fileLocation = { (location) in
+            print("Download finished: \(location.absoluteString)")
+            self.filePath = location.absoluteString
+            self.alert.dismiss(animated: false, completion: nil)
+            self.postNotification()
+        }
+    }
+    
+    private func showAlert() {
+        alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
+        
+        let height = NSLayoutConstraint(item: alert.view as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 170)
+        
+        alert.view.addConstraint(height)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+            self.dataProvider.stopDownload()
+        }
+        
+        alert.addAction(cancelAction)
+        present(alert, animated: true) {
+            
+            let size = CGSize(width: 40, height: 40)
+            let point = CGPoint(x: self.alert.view.frame.width/2 - size.width/2,
+                                y: self.alert.view.frame.height/2 - size.height/2)
+            let activityIndicator = UIActivityIndicatorView(frame: CGRect(origin: point, size: size))
+            activityIndicator.color = .gray
+            activityIndicator.startAnimating()
+            
+            let progressView = UIProgressView(frame: CGRect(x: 0, y: self.alert.view.frame.height - 44, width: self.alert.view.frame.width, height: 2))
+            
+            progressView.tintColor = .blue
+            
+            self.dataProvider.onProgress = { (progress) in
+                progressView.progress = Float(progress)
+                self.alert.message = String(Int(progress * 100)) + "%"
+            }
+            
+            self.alert.view.addSubview(activityIndicator)
+            self.alert.view.addSubview(progressView)
+        }
     }
     
     // MARK: UICollectionViewDataSource
@@ -64,8 +110,29 @@ class MainViewController: UICollectionViewController {
         case Actions.uploadImage:
             NetworkManager.uploadImage(url: uploadImage)
         case Actions.downloadFile:
-            print(action.rawValue)
+            showAlert()
+            dataProvider.startDownload()
         }
     }
     
+}
+
+extension MainViewController {
+    
+    private func registerForNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (_, _) in
+            
+        }
+    }
+    
+    private func postNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Download Complete!"
+        content.body = "Your background transfer has completed. File path: \(filePath!)"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
 }
