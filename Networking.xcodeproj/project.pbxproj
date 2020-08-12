@@ -13,6 +13,7 @@
 		0474CC8524E193C1007BB358 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474CC8424E193C1007BB358 /* CollectionViewCell.swift */; };
 		0474CC8724E2BB35007BB358 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474CC8624E2BB34007BB358 /* NetworkManager.swift */; };
 		0474CC8924E2CDFD007BB358 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474CC8824E2CDFD007BB358 /* ImageProperties.swift */; };
+		0474CC8B24E2F2B1007BB358 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474CC8A24E2F2B1007BB358 /* DataProvider.swift */; };
 		049DCB7524DD81EC00EF8692 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DCB7424DD81EC00EF8692 /* CoursesViewController.swift */; };
 		049DCB7724DD820C00EF8692 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DCB7624DD820C00EF8692 /* TableViewCell.swift */; };
 		049DCB7924DD822C00EF8692 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DCB7824DD822C00EF8692 /* WebViewController.swift */; };
@@ -30,6 +31,7 @@
 		0474CC8424E193C1007BB358 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0474CC8624E2BB34007BB358 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0474CC8824E2CDFD007BB358 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
+		0474CC8A24E2F2B1007BB358 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		049DCB7424DD81EC00EF8692 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		049DCB7624DD820C00EF8692 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		049DCB7824DD822C00EF8692 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				A83C30202108401A00592AE4 /* AppDelegate.swift */,
 				0474CC8624E2BB34007BB358 /* NetworkManager.swift */,
+				0474CC8A24E2F2B1007BB358 /* DataProvider.swift */,
 				0474CC8224E193B1007BB358 /* MainViewController.swift */,
 				0474CC8424E193C1007BB358 /* CollectionViewCell.swift */,
 				A806CF93210B4EA300574064 /* ImageViewController.swift */,
@@ -169,6 +172,7 @@
 				045B15A924DD969E00A0814A /* Course.swift in Sources */,
 				0474CC8124E14275007BB358 /* WebsiteDescription.swift in Sources */,
 				0474CC8724E2BB35007BB358 /* NetworkManager.swift in Sources */,
+				0474CC8B24E2F2B1007BB358 /* DataProvider.swift in Sources */,
 				049DCB7924DD822C00EF8692 /* WebViewController.swift in Sources */,
 				049DCB7524DD81EC00EF8692 /* CoursesViewController.swift in Sources */,
 				0474CC8324E193B1007BB358 /* MainViewController.swift in Sources */,
@@ -318,6 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7683D43P;
 				INFOPLIST_FILE = Networking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -335,6 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7683D43P;
 				INFOPLIST_FILE = Networking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
