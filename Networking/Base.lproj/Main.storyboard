@@ -263,6 +263,7 @@
                         <segue destination="rQw-ZK-1dv" kind="show" identifier="OurCourses" id="JBq-V1-zK8"/>
                         <segue destination="eEq-kV-HBK" kind="show" identifier="ShowImage" id="oNT-ta-mkU"/>
                         <segue destination="rQw-ZK-1dv" kind="show" identifier="OurCoursesWithAlamofire" id="4vs-6g-4Gp"/>
+                        <segue destination="eEq-kV-HBK" kind="show" identifier="ResponseData" id="Vhk-Zu-6WA"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbB-Uz-A1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,5 +273,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4vs-6g-4Gp"/>
+        <segue reference="oNT-ta-mkU"/>
     </inferredMetricsTieBreakers>
 </document>
