@@ -84,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				A83C30202108401A00592AE4 /* AppDelegate.swift */,
-				0474CC8624E2BB34007BB358 /* NetworkManager.swift */,
 				0474CC8A24E2F2B1007BB358 /* DataProvider.swift */,
 				0474CC8224E193B1007BB358 /* MainViewController.swift */,
+				0474CC8624E2BB34007BB358 /* NetworkManager.swift */,
 				0466B2F124E4545D005FA318 /* AlamofireNetworkRequest.swift */,
 				0474CC8424E193C1007BB358 /* CollectionViewCell.swift */,
 				A806CF93210B4EA300574064 /* ImageViewController.swift */,

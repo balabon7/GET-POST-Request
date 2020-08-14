@@ -118,8 +118,8 @@ class AlamofireNetworkRequest {
             "name": "Network Requests with Alamofire",
             "link": "https://swiftbook.ru/contents/our-first-applications/",
             "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
-            "numberOfLessons": 18,
-            "numberOfTests": 10
+            "numberOfLessons": "18",
+            "numberOfTests": "10"
         ]
         
         AF.request(url, method: .post, parameters: userData).responseJSON { (responseJSON) in
@@ -132,8 +132,8 @@ class AlamofireNetworkRequest {
             case .success(let value):
                 print(value)
                 guard let jsonObject = value as? [String : Any],
-                      let course = Course(json: jsonObject) else { return }
-
+                    let course = Course(json: jsonObject) else { return }
+                
                 var courses = [Course]()
                 courses.append(course)
                 completion(courses)
@@ -165,8 +165,8 @@ class AlamofireNetworkRequest {
             case .success(let value):
                 print(value)
                 guard let jsonObject = value as? [String : Any],
-                      let course = Course(json: jsonObject) else { return }
-
+                    let course = Course(json: jsonObject) else { return }
+                
                 var courses = [Course]()
                 courses.append(course)
                 completion(courses)
@@ -176,5 +176,29 @@ class AlamofireNetworkRequest {
             }
         }
     }
+    
+    static func uploadImage(url: String){
+        
+        guard let url = URL(string: url) else { return }
+        
+        let image = UIImage(named: "Notification")!
+        let data = image.pngData()
+        let httpHeaders: HTTPHeaders = ["Authorization": "Client-ID 47c7bc00a214ae1"]
+        
+        print("start uploadImage")
+        
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(data!, withName: "image")
+            
+        }, to: url, headers: httpHeaders).responseJSON { response in
+            
+            switch response.result {
+                
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
-
