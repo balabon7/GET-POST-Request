@@ -109,7 +109,6 @@ class NetworkManager {
             if let response = response {
                 print(response)
             }
-            
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
