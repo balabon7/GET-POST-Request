@@ -65,7 +65,7 @@ class AlamofireNetworkRequest {
         
         AF.request(url).response { (response) in
             guard let data = response.data, let string = String(data: data, encoding: .utf8) else { return }
-         
+            
             print(data)
             print(string)
         }
@@ -74,22 +74,22 @@ class AlamofireNetworkRequest {
     
     static func downloadImage(url: String, completion: @escaping (_ image: UIImage)->()) {
         
-           guard let url = URL(string: url) else { return }
+        guard let url = URL(string: url) else { return }
         
         AF.request(url).responseData { (responseData) in
-
-              switch responseData.result {
-              case .success(let data):
+            
+            switch responseData.result {
+            case .success(let data):
                 guard let image = UIImage(data: data) else { return }
                 completion(image)
-              case .failure(let error):
-                  print(error)
-              }
-          }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     static func downloadImageWithProgress(url: String, completion: @escaping (_ image: UIImage)->()) {
-
+        
         guard let url = URL(string: url) else { return }
         
         AF.request(url).validate().downloadProgress { (progress) in
@@ -109,7 +109,72 @@ class AlamofireNetworkRequest {
                 completion(image)
             }
         }
+    }
+    
+    static func postRequest(url: String, completion: @escaping (_ courses: [Course]) -> ()) {
+        guard let url = URL(string: url) else { return }
         
+        let userData: [String: Any] = [
+            "name": "Network Requests with Alamofire",
+            "link": "https://swiftbook.ru/contents/our-first-applications/",
+            "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
+            "numberOfLessons": 18,
+            "numberOfTests": 10
+        ]
+        
+        AF.request(url, method: .post, parameters: userData).responseJSON { (responseJSON) in
+            
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            
+            print(statusCode)
+            
+            switch responseJSON.result {
+            case .success(let value):
+                print(value)
+                guard let jsonObject = value as? [String : Any],
+                      let course = Course(json: jsonObject) else { return }
+
+                var courses = [Course]()
+                courses.append(course)
+                completion(courses)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func putRequest(url: String, completion: @escaping (_ courses: [Course]) -> ()) {
+        guard let url = URL(string: url) else { return }
+        
+        let userData: [String: Any] = [
+            "name": "Network Put Request",
+            "link": "https://swiftbook.ru/contents/our-first-applications/",
+            "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png",
+            "numberOfLessons": 18,
+            "numberOfTests": 10
+        ]
+        
+        AF.request(url, method: .put, parameters: userData).responseJSON { (responseJSON) in
+            
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            
+            print(statusCode)
+            
+            switch responseJSON.result {
+            case .success(let value):
+                print(value)
+                guard let jsonObject = value as? [String : Any],
+                      let course = Course(json: jsonObject) else { return }
+
+                var courses = [Course]()
+                courses.append(course)
+                completion(courses)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
