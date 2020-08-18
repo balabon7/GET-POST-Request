@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tkF-dp-FRv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y08-Ip-nhI">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -293,9 +293,59 @@
             </objects>
             <point key="canvasLocation" x="1802" y="134"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="gvr-Ts-VXl">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" id="y08-Ip-nhI" customClass="LoginViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bAC-Nr-sQs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Networking Demo App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIP-Gz-H2S">
+                                <rect key="frame" x="87.5" y="149" width="200" height="57.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="HFy-ex-wVl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Swiftbook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHJ-ph-9dY">
+                                <rect key="frame" x="130" y="214.5" width="115" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="cbR-oc-rYu">
+                                <rect key="frame" x="137.5" y="25" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FnZ-HW-1jd"/>
+                                    <constraint firstAttribute="width" secondItem="cbR-oc-rYu" secondAttribute="height" multiplier="1:1" id="nAh-L1-YXb"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BIP-Gz-H2S" firstAttribute="centerX" secondItem="yem-VL-z9k" secondAttribute="centerX" id="3xt-Vm-eQ1"/>
+                            <constraint firstItem="dHJ-ph-9dY" firstAttribute="top" secondItem="BIP-Gz-H2S" secondAttribute="bottom" constant="8" id="JRN-Wt-LEQ"/>
+                            <constraint firstItem="BIP-Gz-H2S" firstAttribute="top" secondItem="cbR-oc-rYu" secondAttribute="bottom" constant="24" id="UZy-j3-dhb"/>
+                            <constraint firstItem="dHJ-ph-9dY" firstAttribute="centerX" secondItem="yem-VL-z9k" secondAttribute="centerX" id="exA-Ax-MOm"/>
+                            <constraint firstItem="cbR-oc-rYu" firstAttribute="centerX" secondItem="yem-VL-z9k" secondAttribute="centerX" id="ftB-41-cTY"/>
+                            <constraint firstItem="cbR-oc-rYu" firstAttribute="top" secondItem="yem-VL-z9k" secondAttribute="top" constant="25" id="m79-cF-Sm3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yem-VL-z9k"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bw0-PQ-yX3" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161" y="134"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SfX-2M-3Ms"/>
         <segue reference="Sf8-PH-Di5"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="firebaselogo" width="180" height="180"/>
+    </resources>
 </document>
