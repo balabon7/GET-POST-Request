@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FBSDKLoginKit
 
 enum Actions: String, CaseIterable {
     case downloadImage = "Donwnload Image"
@@ -49,6 +50,8 @@ class MainViewController: UICollectionViewController {
             self.alert.dismiss(animated: false, completion: nil)
             self.postNotification()
         }
+        
+        checkLoggedIn()
     }
     
     private func showAlert() {
@@ -188,3 +191,22 @@ extension MainViewController {
     }
 }
 
+//MARK: Facebook SDK
+extension MainViewController {
+    
+    private func checkLoggedIn() {
+        
+        guard let token = AccessToken.current, !token.isExpired else {
+            
+            DispatchQueue.main.async {
+                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                        let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                        loginViewController.modalPresentationStyle = .fullScreen
+                        self.present(loginViewController, animated: true)
+                        return
+                    }
+            return
+        }
+        
+    }
+}
