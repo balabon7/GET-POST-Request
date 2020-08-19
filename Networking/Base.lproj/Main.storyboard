@@ -369,19 +369,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in With Facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEi-z9-8Uo">
-                                <rect key="frame" x="87.5" y="150" width="200" height="57.5"/>
+                                <rect key="frame" x="67.5" y="150" width="240" height="57.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="U01-F5-8uh"/>
+                                    <constraint firstAttribute="width" constant="240" id="U01-F5-8uh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="03f-DI-liM">
+                                <rect key="frame" x="177.5" y="169" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mEi-z9-8Uo" firstAttribute="top" secondItem="8nf-3m-uyW" secondAttribute="top" constant="150" id="05n-Kd-OmK"/>
+                            <constraint firstItem="03f-DI-liM" firstAttribute="centerY" secondItem="mEi-z9-8Uo" secondAttribute="centerY" id="F40-fs-rvc"/>
                             <constraint firstItem="mEi-z9-8Uo" firstAttribute="centerX" secondItem="8nf-3m-uyW" secondAttribute="centerX" id="IdI-RM-20j"/>
+                            <constraint firstItem="03f-DI-liM" firstAttribute="centerX" secondItem="mEi-z9-8Uo" secondAttribute="centerX" id="ibh-uw-gWN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8nf-3m-uyW"/>
                     </view>
@@ -389,6 +394,10 @@
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="5w7-lb-HJs"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="03f-DI-liM" id="NaX-f4-sbc"/>
+                        <outlet property="userNameLabel" destination="mEi-z9-8Uo" id="tcS-b2-lj1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amu-CB-sMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

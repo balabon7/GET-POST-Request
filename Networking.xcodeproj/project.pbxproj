@@ -24,6 +24,7 @@
 		04A0B19C24EC0AE600BF8E38 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B19B24EC0AE600BF8E38 /* Colors.swift */; };
 		04A0B19E24ED1E9800BF8E38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A0B19D24ED1E9800BF8E38 /* GoogleService-Info.plist */; };
 		04A0B1A024ED419C00BF8E38 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B19F24ED419C00BF8E38 /* UserProfile.swift */; };
+		04A0B1A224ED516F00BF8E38 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B1A124ED516F00BF8E38 /* CurrentUser.swift */; };
 		1963502BDECC0F4B795FE113 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E58DF03FA9EF2D0060A2CB /* Pods_Networking.framework */; };
 		A806CF94210B4EA300574064 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806CF93210B4EA300574064 /* ImageViewController.swift */; };
 		A83C30212108401A00592AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83C30202108401A00592AE4 /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		04A0B19B24EC0AE600BF8E38 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		04A0B19D24ED1E9800BF8E38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04A0B19F24ED419C00BF8E38 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		04A0B1A124ED516F00BF8E38 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		482B0BFE5C065BA6886C5237 /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		51E58DF03FA9EF2D0060A2CB /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A806CF93210B4EA300574064 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				0474CC8824E2CDFD007BB358 /* ImageProperties.swift */,
 				045B15A824DD969E00A0814A /* Course.swift */,
 				04A0B19F24ED419C00BF8E38 /* UserProfile.swift */,
+				04A0B1A124ED516F00BF8E38 /* CurrentUser.swift */,
 				0474CC8024E14275007BB358 /* WebsiteDescription.swift */,
 				049DCB7624DD820C00EF8692 /* TableViewCell.swift */,
 				049DCB7824DD822C00EF8692 /* WebViewController.swift */,
@@ -262,6 +265,7 @@
 				0474CC8924E2CDFD007BB358 /* ImageProperties.swift in Sources */,
 				0474CC8524E193C1007BB358 /* CollectionViewCell.swift in Sources */,
 				04A0B19C24EC0AE600BF8E38 /* Colors.swift in Sources */,
+				04A0B1A224ED516F00BF8E38 /* CurrentUser.swift in Sources */,
 				0466B2F224E4545D005FA318 /* AlamofireNetworkRequest.swift in Sources */,
 				049DCB7724DD820C00EF8692 /* TableViewCell.swift in Sources */,
 				045B15A924DD969E00A0814A /* Course.swift in Sources */,

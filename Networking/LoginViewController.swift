@@ -126,7 +126,7 @@ extension LoginViewController: LoginButtonDelegate {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let userData = ["name": userProfile?.name]
+        let userData = ["name": userProfile?.name, "email": "testmail@gmail.com"]
         
         let values = [uid: userData]
         
