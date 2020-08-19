@@ -7,4 +7,5 @@ target 'Networking' do
 
   pod 'Alamofire', '~> 5.2'
   pod 'FBSDKLoginKit'
+  pod 'Firebase/Auth'
 end

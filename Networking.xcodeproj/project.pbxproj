@@ -22,6 +22,7 @@
 		04A0B19824EC0A4500BF8E38 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B19724EC0A4500BF8E38 /* Extensions.swift */; };
 		04A0B19A24EC0A6600BF8E38 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B19924EC0A6600BF8E38 /* UserProfileVC.swift */; };
 		04A0B19C24EC0AE600BF8E38 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0B19B24EC0AE600BF8E38 /* Colors.swift */; };
+		04A0B19E24ED1E9800BF8E38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04A0B19D24ED1E9800BF8E38 /* GoogleService-Info.plist */; };
 		1963502BDECC0F4B795FE113 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E58DF03FA9EF2D0060A2CB /* Pods_Networking.framework */; };
 		A806CF94210B4EA300574064 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806CF93210B4EA300574064 /* ImageViewController.swift */; };
 		A83C30212108401A00592AE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83C30202108401A00592AE4 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		04A0B19724EC0A4500BF8E38 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04A0B19924EC0A6600BF8E38 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		04A0B19B24EC0AE600BF8E38 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		04A0B19D24ED1E9800BF8E38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		482B0BFE5C065BA6886C5237 /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		51E58DF03FA9EF2D0060A2CB /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A806CF93210B4EA300574064 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				A83C30272108401B00592AE4 /* Assets.xcassets */,
 				A83C30292108401B00592AE4 /* LaunchScreen.storyboard */,
 				A83C302C2108401B00592AE4 /* Info.plist */,
+				04A0B19D24ED1E9800BF8E38 /* GoogleService-Info.plist */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A83C302B2108401B00592AE4 /* LaunchScreen.storyboard in Resources */,
+				04A0B19E24ED1E9800BF8E38 /* GoogleService-Info.plist in Resources */,
 				A83C30282108401B00592AE4 /* Assets.xcassets in Resources */,
 				A83C30262108401A00592AE4 /* Main.storyboard in Resources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import FirebaseAuth
 
 class UserProfileVC: UIViewController {
     
@@ -58,18 +59,19 @@ extension UserProfileVC: LoginButtonDelegate  {
         
     }
     private func openLoginViewController(){
-        
-        guard let token = AccessToken.current, !token.isExpired else {
+
+        do {
+            try Auth.auth().signOut()
             
             DispatchQueue.main.async {
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                loginViewController.modalPresentationStyle = .fullScreen
-                self.present(loginViewController, animated: true)
-                return
-            }
-            return
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    loginViewController.modalPresentationStyle = .fullScreen
+                    self.present(loginViewController, animated: true)
+                    return
+                }
+        } catch let error {
+            print("Failed to SignOut", error.localizedDescription)
         }
-        
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import FBSDKLoginKit
+import FirebaseAuth
 
 enum Actions: String, CaseIterable {
     case downloadImage = "Donwnload Image"
@@ -196,17 +197,17 @@ extension MainViewController {
     
     private func checkLoggedIn() {
         
-        guard let token = AccessToken.current, !token.isExpired else {
+        //        guard let token = AccessToken.current, !token.isExpired else {
+        
+        if Auth.auth().currentUser == nil {
             
             DispatchQueue.main.async {
-                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                        let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                        loginViewController.modalPresentationStyle = .fullScreen
-                        self.present(loginViewController, animated: true)
-                        return
-                    }
-            return
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                loginViewController.modalPresentationStyle = .fullScreen
+                self.present(loginViewController, animated: true)
+                return
+            }
         }
-        
     }
 }

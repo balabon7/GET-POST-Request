@@ -9,9 +9,10 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    
     lazy var loginButton: UIButton = {
         let button = FBLoginButton()
         button.frame = CGRect(x: 32, y: 360, width: view.frame.width - 64, height: 50)
@@ -33,7 +34,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
     }
     
@@ -48,8 +49,8 @@ class LoginViewController: UIViewController {
             return .lightContent
         }
     }
-
-
+    
+    
 }
 
 //MARK: - Facebook SDK
@@ -60,8 +61,10 @@ extension LoginViewController: LoginButtonDelegate {
         if error != nil {
             print(error?.localizedDescription as Any)
         }
-        
+    
         guard let token = AccessToken.current, !token.isExpired else { return }
+        
+        signIntoFirebase()
         openMainViewController()
         print("Successfully logged in with facebook")
     }
@@ -76,8 +79,28 @@ extension LoginViewController: LoginButtonDelegate {
     }
     
     @objc private func handleCastomLogin() {
-        
+        signIntoFirebase()
         print("Custom login button pressed")
+        
+    }
+    
+    private func signIntoFirebase() {
+        
+        let accessToken = AccessToken.current
+        
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            
+            if let error = error {
+                print("Auth facebook error",error.localizedDescription)
+                return
+            }
+            
+            print("Successfully loged in our FB user: \(user!)")
+        }
     }
     
 }
