@@ -61,10 +61,11 @@ extension LoginViewController: LoginButtonDelegate {
         if error != nil {
             print(error?.localizedDescription as Any)
         }
-    
+        
         guard let token = AccessToken.current, !token.isExpired else { return }
         
         signIntoFirebase()
+        fetchFacebookFields()
         openMainViewController()
         print("Successfully logged in with facebook")
     }
@@ -79,7 +80,7 @@ extension LoginViewController: LoginButtonDelegate {
     }
     
     @objc private func handleCastomLogin() {
-        signIntoFirebase()
+        //signIntoFirebase()
         print("Custom login button pressed")
         
     }
@@ -100,6 +101,21 @@ extension LoginViewController: LoginButtonDelegate {
             }
             
             print("Successfully loged in our FB user: \(user!)")
+        }
+    }
+    
+    private func fetchFacebookFields() {
+        
+        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (_, result, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let userData = result as? [String: Any] {
+                print(userData)
+            }
         }
     }
     
