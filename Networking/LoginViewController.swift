@@ -24,21 +24,21 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    lazy var customFBLoginButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(hexValue: "#3B5999", alpha: 1)
-        button.setTitle("Login with Facebook", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.setTitleColor(.white, for: .normal)
-        button.frame = CGRect(x: 32, y: 360 + 80, width: view.frame.width - 64, height: 50)
-        button.layer.cornerRadius = 4
-        button.addTarget(self, action: #selector(handleCastomLogin), for: .touchUpInside)
-        return button
-    }()
+//    lazy var customFBLoginButton: UIButton = {
+//        let button = UIButton()
+//        button.backgroundColor = UIColor(hexValue: "#3B5999", alpha: 1)
+//        button.setTitle("Login with Facebook", for: .normal)
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+//        button.setTitleColor(.white, for: .normal)
+//        button.frame = CGRect(x: 32, y: 360 + 80, width: view.frame.width - 64, height: 50)
+//        button.layer.cornerRadius = 4
+//        button.addTarget(self, action: #selector(handleCastomLogin), for: .touchUpInside)
+//        return button
+//    }()
     
     lazy var googleLoginButton: GIDSignInButton = {
         let button = GIDSignInButton()
-        button.frame = CGRect(x: 32, y: 360 + 80 + 80, width: view.frame.width - 64, height: 50)
+        button.frame = CGRect(x: 32, y: 360 + 80, width: view.frame.width - 64, height: 50)
         return button
     }()
     
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     private func setupViews() {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.addSubview(loginButton)
-        view.addSubview(customFBLoginButton)
+        //view.addSubview(customFBLoginButton)
         view.addSubview(googleLoginButton)
     }
     
@@ -91,10 +91,10 @@ extension LoginViewController: LoginButtonDelegate {
         dismiss(animated: true)
     }
     
-    @objc private func handleCastomLogin() {
-        print("Custom login button pressed")
-        
-    }
+//    @objc private func handleCastomLogin() {
+//        print("Custom login button pressed")
+//        
+//    }
     
     private func signIntoFirebase() {
         
@@ -137,7 +137,7 @@ extension LoginViewController: LoginButtonDelegate {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let userData = ["name": userProfile?.name, "email": "testmail@gmail.com"]
+        let userData = ["name": userProfile?.name, "email": userProfile?.email ?? "noemail@gmail.com"]
         
         let values = [uid: userData]
         
@@ -167,6 +167,12 @@ extension LoginViewController: GIDSignInDelegate {
         
         print("Successfully logged into Google")
         
+        if let userName = user.profile.name, let userEmail = user.profile.email {
+            
+            let userData = ["name": userName, "email": userEmail]
+            userProfile = UserProfile(data: userData)
+        }
+        
         guard let authentication = user.authentication else { return }
         
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
@@ -179,7 +185,7 @@ extension LoginViewController: GIDSignInDelegate {
             }
             
            print("Successfully logged into Firebase with Google")
-            self.openMainViewController()
+            self.saveIntoFirebase()
         }
     }
 }
