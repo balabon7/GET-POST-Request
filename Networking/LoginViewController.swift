@@ -42,6 +42,18 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+        lazy var customGoogleLoginButton: UIButton = {
+            let button = UIButton()
+            button.backgroundColor = .white
+            button.setTitle("Login with Google", for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            button.setTitleColor(.gray, for: .normal)
+            button.frame = CGRect(x: 32, y: 360 + 80 + 80, width: view.frame.width - 64, height: 50)
+            button.layer.cornerRadius = 4
+            button.addTarget(self, action: #selector(handleCastomLogin), for: .touchUpInside)
+            return button
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +68,7 @@ class LoginViewController: UIViewController {
         view.addSubview(loginButton)
         //view.addSubview(customFBLoginButton)
         view.addSubview(googleLoginButton)
+        view.addSubview(customGoogleLoginButton)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -90,11 +103,6 @@ extension LoginViewController: LoginButtonDelegate {
     private func openMainViewController() {
         dismiss(animated: true)
     }
-    
-//    @objc private func handleCastomLogin() {
-//        print("Custom login button pressed")
-//        
-//    }
     
     private func signIntoFirebase() {
         
@@ -187,5 +195,12 @@ extension LoginViewController: GIDSignInDelegate {
            print("Successfully logged into Firebase with Google")
             self.saveIntoFirebase()
         }
+    }
+    
+    @objc private func handleCastomLogin() {
+        
+        GIDSignIn.sharedInstance()?.signIn()
+        print("Custom google login button pressed")
+        
     }
 }
