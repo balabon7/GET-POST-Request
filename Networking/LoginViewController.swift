@@ -11,6 +11,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -29,9 +30,15 @@ class LoginViewController: UIViewController {
         button.setTitle("Login with Facebook", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitleColor(.white, for: .normal)
-        button.frame = CGRect(x: 32, y: 360 + 60, width: view.frame.width - 64, height: 50)
+        button.frame = CGRect(x: 32, y: 360 + 80, width: view.frame.width - 64, height: 50)
         button.layer.cornerRadius = 4
         button.addTarget(self, action: #selector(handleCastomLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var googleLoginButton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.frame = CGRect(x: 32, y: 360 + 80 + 80, width: view.frame.width - 64, height: 50)
         return button
     }()
     
@@ -39,12 +46,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
     private func setupViews() {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.addSubview(loginButton)
         view.addSubview(customFBLoginButton)
+        view.addSubview(googleLoginButton)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -141,4 +152,34 @@ extension LoginViewController: LoginButtonDelegate {
         }
     }
     
+}
+
+//MARK: Google SDK
+
+extension LoginViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            print("Failed into Google",error.localizedDescription)
+            return
+        }
+        
+        print("Successfully logged into Google")
+        
+        guard let authentication = user.authentication else { return }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (result, error) in
+            
+            if let error = error {
+                print("Something went wrong with out Google user: \(error.localizedDescription)")
+                return
+            }
+            
+           print("Successfully logged into Firebase with Google")
+            self.openMainViewController()
+        }
+    }
 }
