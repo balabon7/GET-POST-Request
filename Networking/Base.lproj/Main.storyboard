@@ -411,11 +411,11 @@
             <objects>
                 <viewController storyboardIdentifier="SignUp" title="Sign Up" id="5ut-4M-PFi" customClass="SignUpViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GbF-gU-BMW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0c7-I2-qiL">
-                                <rect key="frame" x="36" y="64" width="303" height="320"/>
+                                <rect key="frame" x="36" y="34" width="303" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKD-3c-KxA">
                                         <rect key="frame" x="116" y="8" width="71" height="24"/>
@@ -564,7 +564,7 @@
                             <constraint firstItem="Bk9-eZ-Doc" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="aTD-L8-Dc1" secondAttribute="trailing" constant="331" id="o98-71-v3K"/>
                             <constraint firstItem="aTD-L8-Dc1" firstAttribute="top" secondItem="Bk9-eZ-Doc" secondAttribute="top" id="xWX-ar-8lr"/>
                             <constraint firstItem="0c7-I2-qiL" firstAttribute="leading" secondItem="Bk9-eZ-Doc" secondAttribute="leading" constant="36" id="xjZ-dZ-rSS"/>
-                            <constraint firstItem="0c7-I2-qiL" firstAttribute="top" secondItem="Bk9-eZ-Doc" secondAttribute="top" constant="64" id="zs5-AL-wSd"/>
+                            <constraint firstItem="0c7-I2-qiL" firstAttribute="top" secondItem="Bk9-eZ-Doc" secondAttribute="top" constant="34" id="zs5-AL-wSd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bk9-eZ-Doc"/>
                     </view>
@@ -685,7 +685,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5ut-4M-PFi" kind="show" id="VgT-Rt-Qg1"/>
+                                    <action selector="signIn:" destination="CcJ-j0-5f1" eventType="touchUpInside" id="9nS-hK-fbw"/>
                                 </connections>
                             </button>
                         </subviews>

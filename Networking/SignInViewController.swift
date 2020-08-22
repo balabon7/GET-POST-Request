@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
     
@@ -65,6 +66,18 @@ class SignInViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func signIn(_ sender: UIButton) {
+        
+        DispatchQueue.main.async {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyBoard.instantiateViewController(withIdentifier: "SignUp") as! SignUpViewController
+            loginViewController.modalPresentationStyle = .fullScreen
+            self.present(loginViewController, animated: true)
+            return
+        }
+    }
+    
     
     @objc func keyboardWillAppear(notification: NSNotification){
         
